@@ -1,0 +1,67 @@
+<?php
+/**
+ * classe TPage
+ * classe para controle do fluxo de execução
+ * mediante parametros passados via URL
+ */
+class TPage extends TElement
+{
+    /**
+     * método __construct()
+     */
+    public function __construct()
+    {
+        // define o elemento que irá representar
+        parent::__construct('html');
+    }
+    
+    /**
+     * método show()
+     * exibe o conteúdo da página
+     */
+    public function show()
+    {
+        $this->run();
+        parent::show();
+    }
+    
+    /**
+     * método run()
+     * executa determinado método de acordo com os parâmetros recebidos
+     */
+    public function run()
+    {
+        if ($_GET)//Verifica se foi passado algo junto com a URL
+		//page1.php?method=olaMundo&nome=Ricardo
+		//page1.php?class=Clientes&method=listar
+        {
+            $class = isset($_GET['class']) ? $_GET['class'] : NULL;
+			//Vefirifica se foi passado uma Classe //POO
+            $method = isset($_GET['method']) ? $_GET['method'] : NULL;
+			//Vefirifica se foi passado um Método //Estruturado
+            if ($class)
+            {
+                //$object = $class == get_class($this) ? $this : new $class;
+				$object = new $class;
+                if (method_exists($object, $method))
+                {
+                    call_user_func(array($object, $method), $_GET);
+					//Irá chamar o método dentro do objeto com o 
+					//$_GET 'Bruto', dentro do método será feito a 
+					//segregação do que foi passado
+					//junto com a URL : //page1.php?method=listar
+					//e que foi capturado com o $_GET
+                }
+            }
+            else if (function_exists($method))
+            {
+                call_user_func($method, $_GET);
+				//Irá chamar o método com o $_GET 'Bruto', dentro
+				//do método será feito a segregação do que foi passado
+				//junto com a URL : //page1.php?method=listar
+				//e que foi capturado com o $_GET
+            }
+        }
+    }
+}
+?>

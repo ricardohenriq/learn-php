@@ -1,0 +1,63 @@
+<html>
+	<head>	
+		<title>Formulario</title>
+	</head>
+	<body>
+		<form name="formTable" method="post" action="GravarFormulario.php" enctype="multipart/form-data">
+			<table border="1" width="400px" style="border-collapse:collapse">
+				<tr>
+					<td valign="top" width="200px"><b><font face="Arial">Nome</font></b></td>
+					<td><input maxlength="40" name="nome" type="text" size="14" /></td>
+				</tr>
+				<tr>
+					<td valign="top" width="200px"><b><font face="Arial">Senha</font></b></td>
+					<td><input maxlength="40" name="nome" type="password" size="14" /></td>
+				</tr>
+				<tr>
+					<td valign="top" width="200px"><b><font face="Arial">Sexo</font></b></td>
+					<td>
+						<input name="sexo" value="M" type="radio">Masculino</input><br />
+						<input name="sexo" value="M" type="radio">Feminino</input><br />
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" width="200px"><b><font face="Arial">Linguagem de Programação</font></b></td>
+					<td>
+						<select name="linguagem">
+							<option value="java">Java</option>
+							<option value="php">PHP</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" width="200px"><b><font face="Arial">Idiomas</font></b></td>
+					<td>
+						<input name="idiomas[]" value="ingles" type="checkbox">Ingles</input><br>
+						<input name="idiomas[]" value="espanhol" type="checkbox">Espanhol</input><br>
+						<input name="idiomas[]" value="portugues" type="checkbox">Portugues</input><br>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" width="200px"><b><font face="Arial">Estilos</font></b></td>
+					<td>
+						<select name="estilos[]" multiple>
+							<option value="classico">Classico</option>
+							<option value="contemporaneo">Contemporaneo</option>
+							<option value="moderno">Moderno</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" width="200px"><b><font face="Arial">Fotografia</font></b></td>
+					<td><input name="foto" type="file" /></td>
+				</tr>
+				<tr>
+					<td valign="top" width="200px"><b><font face="Arial">Curriculo</font></b></td>
+					<td><textarea name="curriculo" rows="4" cols="40">Digite seu Curriculo</textarea></td>
+				</tr>
+			</table>
+			<input type="submit" value="Enviar"></input>
+			<input type="reset" value="Limpar"></input>
+		</form>
+	</body>
+</html>
